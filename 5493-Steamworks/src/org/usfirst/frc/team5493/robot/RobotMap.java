@@ -2,7 +2,8 @@ package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.controllers.LWTalon;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.SpeedController;
 
 public class RobotMap {
