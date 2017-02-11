@@ -36,6 +36,7 @@ public class Robot extends IterativeRobot {
     	
 		oi = new OI();
 		
+		//BKE - Try commenting this out this could be causing the issue
         chooser = new SendableChooser();
         chooser.addDefault("Mecanum Drive", new JoystickDrive());
         SmartDashboard.putData("Auto mode", chooser);
