@@ -29,6 +29,7 @@ public class DriveBase extends Subsystem {
 		rightBackMotor = new CANTalon(RobotMap.rightBack);
 		
 		//leftBackMotor = (assigning a port on the joystick for controlling the left back motor)
+		//BKE - These motors are being passed by wrong order... front left, rear left, front right, rear right.
 		drive = new RobotDrive(leftFrontMotor, rightFrontMotor, leftBackMotor, rightBackMotor);
 		
 		LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable) leftFrontMotor);
