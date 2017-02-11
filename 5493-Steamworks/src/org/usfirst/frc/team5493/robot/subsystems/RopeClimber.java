@@ -2,7 +2,8 @@ package org.usfirst.frc.team5493.robot.subsystems;
 
 import org.usfirst.frc.team5493.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
