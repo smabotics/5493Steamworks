@@ -115,4 +115,14 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+    
+	/**
+	 * The log method puts interesting information to the SmartDashboard.
+	 */
+	private void log() {
+		this.gearSystem.log();
+		this.driveBase.log();
+		this.ropeClimber.log();
+	}
+
 }

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
 
@@ -60,8 +61,19 @@ public class DriveBase extends Subsystem {
 		drive.mecanumDrive_Cartesian(x, y, twist, gyro);
 	}
 
+	/**
+	 * The log method puts interesting information to the SmartDashboard.
+	 */
 	public void log() {
-
+//		SmartDashboard.putNumber("Left Distance", leftEncoder.getDistance());
+//		SmartDashboard.putNumber("Right Distance", rightEncoder.getDistance());
+//		SmartDashboard.putNumber("Left Speed", leftEncoder.getRate());
+//		SmartDashboard.putNumber("Right Speed", rightEncoder.getRate());
+//		SmartDashboard.putNumber("Gyro", gyro.getAngle());
+		SmartDashboard.putNumber("Left Back Motor Speed", this.leftBackMotor.get());
+		SmartDashboard.putNumber("Right Back Motor Speed", this.rightBackMotor.get());
+		SmartDashboard.putNumber("Left Front Motor Speed", this.leftFrontMotor.get());
+		SmartDashboard.putNumber("Right Front Motor Speed", this.rightFrontMotor.get());
 	}
 
 	public void reset() {
