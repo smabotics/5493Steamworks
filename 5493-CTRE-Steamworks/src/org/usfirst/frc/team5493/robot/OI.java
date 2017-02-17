@@ -30,10 +30,10 @@ public class OI {
     }
     
     public OI(){
-    	JoystickButton climbRope = new JoystickButton(joy2, RobotMap.JOYBTN_X);
-    	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOYBTN_B);
-    	JoystickButton solenoidIn = new JoystickButton(joy2, RobotMap.JOYBTN_A);
-    	JoystickButton solenoidOut = new JoystickButton(joy2, RobotMap.JOYBTN_Y);
+    	JoystickButton climbRope = new JoystickButton(joy2, RobotMap.JOYBTN_Y);
+    	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOYBTN_A);
+    	JoystickButton solenoidIn = new JoystickButton(joy2, RobotMap.JOYBTN_B);
+    	JoystickButton solenoidOut = new JoystickButton(joy2, RobotMap.JOYBTN_X);
     	//JoystickButton triggerButton = new JoystickButton(driveJoystick, RobotMap.JOYBTN_TRIGGER);
   
     	

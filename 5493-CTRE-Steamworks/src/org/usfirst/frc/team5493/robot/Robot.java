@@ -40,7 +40,6 @@ public class Robot extends IterativeRobot {
 //        chooser = new SendableChooser();
 //        chooser.addDefault("Mecanum Drive", new JoystickDrive());
         driveBase = new DriveBase();
-//        SmartDashboard.putData("Auto mode", chooser);
         SmartDashboard.putData("Drive Base", driveBase);
 		SmartDashboard.putData("Rope Climber", ropeClimber);
 		SmartDashboard.putData("Pneumatics System", pneumatics);

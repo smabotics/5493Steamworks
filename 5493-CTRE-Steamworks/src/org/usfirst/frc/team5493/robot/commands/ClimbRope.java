@@ -17,8 +17,8 @@ public class ClimbRope extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ropeClimber.ropeMotorLeft.set(0.5);
-    	Robot.ropeClimber.ropeMotorRight.set(0.5);
+    	Robot.ropeClimber.ropeMotorLeft.set(1.0);
+    	Robot.ropeClimber.ropeMotorRight.set(1.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
