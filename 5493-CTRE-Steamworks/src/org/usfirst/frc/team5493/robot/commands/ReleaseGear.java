@@ -1,10 +1,12 @@
 package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
-import org.usfirst.frc.team5493.robot.subsystems.Pneumatics;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ *
+ */
 public class ReleaseGear extends Command {
 
     public ReleaseGear() {

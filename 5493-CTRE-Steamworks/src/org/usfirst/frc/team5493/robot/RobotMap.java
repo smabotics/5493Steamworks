@@ -29,11 +29,14 @@ public class RobotMap {
     public static int rightBack = 8;
     public static int ropeMotorLeft = 2;
     public static int ropeMotorRight = 9;
+    public int climbedRope = 0;
 	
     //BKE - Better names would allow you or anyone new to the code to know what the pneumatics1 and pneumatics2 do?
 	public static int pneumaticsPort1 = 0;
 	public static int pneumaticsPort2 = 1;
 	public static int compressorNum = 0;
+	
+	public static int distanceSensor = 3;
 	
 	public static SpeedController SpeedController(int port) {
 		//BKE - You only need this if you have TalonSR (LWTalon) AND TalonSRX (CANTalon) mixes on your bot or a practice bot with TalonSR and a comp bot with TalonSRX.

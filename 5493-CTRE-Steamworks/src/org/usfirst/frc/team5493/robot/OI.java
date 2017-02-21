@@ -1,8 +1,8 @@
 package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.ClimbRope;
-import org.usfirst.frc.team5493.robot.commands.CloseGearHolder;
 import org.usfirst.frc.team5493.robot.commands.ReleaseGear;
+import org.usfirst.frc.team5493.robot.commands.CloseGear;
 import org.usfirst.frc.team5493.robot.commands.UnClimb;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -32,15 +32,15 @@ public class OI {
     public OI(){
     	JoystickButton climbRope = new JoystickButton(joy2, RobotMap.JOYBTN_Y);
     	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOYBTN_A);
-    	JoystickButton solenoidIn = new JoystickButton(joy2, RobotMap.JOYBTN_B);
-    	JoystickButton solenoidOut = new JoystickButton(joy2, RobotMap.JOYBTN_X);
+    	JoystickButton releaseGear = new JoystickButton(joy2, RobotMap.JOYBTN_B);
+    	JoystickButton closeGear = new JoystickButton(joy2, RobotMap.JOYBTN_X);
     	//JoystickButton triggerButton = new JoystickButton(driveJoystick, RobotMap.JOYBTN_TRIGGER);
   
     	
     	climbRope.whileHeld(new ClimbRope());
     	unClimb.whileHeld(new UnClimb());
-    	solenoidIn.whenPressed(new CloseGearHolder());
-    	solenoidOut.whenPressed(new ReleaseGear());
+    	releaseGear.whenPressed(new ReleaseGear());
+    	closeGear.whenPressed(new CloseGear());
        
     // Start the command when the button is pressed and let it run the command
     // until it is finished as determined by it's isFinished method.

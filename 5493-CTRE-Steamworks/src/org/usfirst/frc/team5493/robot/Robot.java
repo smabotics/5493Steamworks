@@ -1,13 +1,14 @@
 package org.usfirst.frc.team5493.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
-import org.usfirst.frc.team5493.robot.commands.ClimbRope;
-import org.usfirst.frc.team5493.robot.commands.ReleaseGear;
+import org.usfirst.frc.team5493.robot.commands.GearForAutoInMiddlePosition;
+import org.usfirst.frc.team5493.robot.commands.MecanumDriveForAuto;
+import org.usfirst.frc.team5493.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team5493.robot.subsystems.RopeClimber;
@@ -20,11 +21,12 @@ public class Robot extends IterativeRobot {
 	public static  DriveBase driveBase;
 	public static RopeClimber ropeClimber;
 	public static Pneumatics pneumatics;
+	public static DistanceSensor distance;
 	
 	public static OI oi;
 
     Command autonomousCommand;
-//    SendableChooser chooser;
+    SendableChooser autonomousMode = new SendableChooser();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -33,16 +35,15 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	ropeClimber = new RopeClimber();
     	pneumatics = new Pneumatics();
-    	
-		oi = new OI();
-		
-		//BKE - Try commenting this out this could be causing the issue
-//        chooser = new SendableChooser();
-//        chooser.addDefault("Mecanum Drive", new JoystickDrive());
         driveBase = new DriveBase();
-        SmartDashboard.putData("Drive Base", driveBase);
-		SmartDashboard.putData("Rope Climber", ropeClimber);
-		SmartDashboard.putData("Pneumatics System", pneumatics);
+        distance = new DistanceSensor();
+        oi = new OI();
+        
+        CameraServer.getInstance().startAutomaticCapture();
+        
+        //SmartDashboard.putData("Drive Base", driveBase);
+		//SmartDashboard.putData("Rope Climber", ropeClimber);
+		//SmartDashboard.putData("Pneumatics System", pneumatics);
     }
 	
 	/**
@@ -51,7 +52,8 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+    	//if(RobotMap.climbedRope == 1)
+    		
     }
 	
 	public void disabledPeriodic() {
@@ -68,8 +70,9 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-//        autonomousCommand = (Command) chooser.getSelected();
-        
+        autonomousCommand = (Command)autonomousMode.getSelected();
+        if(autonomousCommand != null)
+        	autonomousCommand.start();
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":
@@ -80,10 +83,9 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new ExampleCommand();
 			break;
 		} */
-    	
     	// schedule the autonomous command (example)
-        if (autonomousCommand != null) 
-        	autonomousCommand.start();
+        //if (autonomousCommand != null) 
+        	//autonomousCommand.start();
     }
 
     /**
@@ -91,6 +93,14 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        //new CalculateDistance(); //DOESNT WORK
+        //new GearForAutoInMiddlePosition(); //DOESNT WORK
+        //new MecanumDriveForAuto(); //DOESNTWORK
+        //distance.printDistance();
+        //while(distance.dist > 0.5 && distance.dist < 1.0){
+        	//driveBase.drive(-0.1, -0.1, 0.0, 0.0);
+        //}
+        //pneumatics.release();
     }
 
     public void teleopInit() {
@@ -124,6 +134,12 @@ public class Robot extends IterativeRobot {
 		ropeClimber.log();
 		pneumatics.log();
 		
+	}
+	
+	private void choosingAutonomous(){
+		autonomousMode.addObject("Drive Straight", new MecanumDriveForAuto());
+		autonomousMode.addObject("Gear", new GearForAutoInMiddlePosition());
+		SmartDashboard.putData("Autonomous Selection", autonomousMode);
 	}
 
 }

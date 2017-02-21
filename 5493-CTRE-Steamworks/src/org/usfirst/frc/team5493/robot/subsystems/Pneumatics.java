@@ -20,16 +20,17 @@ public class Pneumatics extends Subsystem {
    
     }
     
-    public void chamber(){
+    public void release(){
     	if(!chambered){
+    		DriverStation.reportError("Releasing Gear", false);
     		solenoid.set(DoubleSolenoid.Value.kReverse);
     		chambered = true;
     	}
     }
     
-    public void release(){
+    public void close(){
     	if(chambered){
-    		DriverStation.reportError("Release", false);
+    		DriverStation.reportError("Closing Gear", false);
     		solenoid.set(DoubleSolenoid.Value.kForward);
     		chambered = false;
     	} else {

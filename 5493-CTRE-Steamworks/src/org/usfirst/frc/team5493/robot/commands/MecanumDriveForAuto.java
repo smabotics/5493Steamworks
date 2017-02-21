@@ -8,6 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MecanumDriveForAuto extends Command {
+	
+	private static double forwardSpeed = -0.2;
+	private static double forwardTime = 2;
+	
+	private static double turnLeftSpeed = -0.2;
+	private static double turnRightSpeed = 0.2;
+	private static double turnTime = 1;
 
     public MecanumDriveForAuto() {
         requires(Robot.driveBase);
@@ -15,6 +22,7 @@ public class MecanumDriveForAuto extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveBase.drive(forwardSpeed, forwardSpeed, 0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
