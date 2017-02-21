@@ -4,20 +4,26 @@ import org.usfirst.frc.team5493.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class MecanumDriveForAuto extends Command {
+public class DriveStraight extends Command {
+	
+	private double speed;
+	private double time;
 
-
-    public MecanumDriveForAuto() {
+    public DriveStraight(double s, double t) {
         requires(Robot.driveBase);
+        speed = s;
+        time = t;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double currentTime = System.currentTimeMillis();
+    	while(currentTime < time)
+    		Robot.driveBase.drive(speed, speed, 0.0, 0.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -27,7 +33,7 @@ public class MecanumDriveForAuto extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveBase.drive(0.0, 0.0, 0.0, 0.0);
+    	Robot.driveBase.stop();
     }
 
     // Called when another command which requires one or more of the same

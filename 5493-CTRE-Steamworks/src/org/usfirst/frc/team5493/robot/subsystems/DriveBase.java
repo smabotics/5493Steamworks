@@ -84,7 +84,7 @@ public class DriveBase extends Subsystem {
 		SmartDashboard.putNumber("Right Front Motor Speed", this.rightFrontMotor.get());
 	}
 
-	public void reset() {
+	public void stop() {
 		drive(0.0, 0.0, 0.0, 0.0);
 	}
 }
