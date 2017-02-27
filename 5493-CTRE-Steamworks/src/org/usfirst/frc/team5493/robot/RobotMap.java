@@ -19,7 +19,6 @@ public class RobotMap {
 	public final static int JOYBTN_RB = 6;
 	public final static int JOYAXS_LEFT_Y = 1;
 	public final static int JOYAXS_RIGHT_Y = 5;
-	public final static int JOYBTN_TRIGGER = 1;
 	
 	//Talon #'s from the web dashboard
 	//BKE -- Are these drive motors or ropeMotors - better comments and names help in a pinch.

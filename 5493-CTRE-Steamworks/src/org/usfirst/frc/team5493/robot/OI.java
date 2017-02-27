@@ -8,7 +8,6 @@ import org.usfirst.frc.team5493.robot.commands.UnClimb;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,8 +33,6 @@ public class OI {
     	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOYBTN_A);
     	JoystickButton releaseGear = new JoystickButton(joy2, RobotMap.JOYBTN_B);
     	JoystickButton closeGear = new JoystickButton(joy2, RobotMap.JOYBTN_X);
-    	//JoystickButton triggerButton = new JoystickButton(driveJoystick, RobotMap.JOYBTN_TRIGGER);
-  
     	
     	climbRope.whileHeld(new ClimbRope());
     	unClimb.whileHeld(new UnClimb());

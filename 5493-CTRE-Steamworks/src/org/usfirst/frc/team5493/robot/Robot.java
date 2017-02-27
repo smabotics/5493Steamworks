@@ -70,6 +70,8 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
+//    	autonomousCommand = new GearForAutoInMiddlePosition();
+    	
         autonomousCommand = (Command)autonomousMode.getSelected();
         if(autonomousCommand != null)
         	autonomousCommand.start();
