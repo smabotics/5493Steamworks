@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5493.robot.commands.GearForAutoInMiddlePosition;
-import org.usfirst.frc.team5493.robot.commands.MecanumDriveForAuto;
 import org.usfirst.frc.team5493.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Pneumatics;
@@ -39,7 +38,7 @@ public class Robot extends IterativeRobot {
         distance = new DistanceSensor();
         oi = new OI();
         
-        CameraServer.getInstance().startAutomaticCapture();
+        //CameraServer.getInstance().startAutomaticCapture();
         
         //SmartDashboard.putData("Drive Base", driveBase);
 		//SmartDashboard.putData("Rope Climber", ropeClimber);
@@ -70,9 +69,9 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-//    	autonomousCommand = new GearForAutoInMiddlePosition();
+    	autonomousCommand = new GearForAutoInMiddlePosition();
     	
-        autonomousCommand = (Command)autonomousMode.getSelected();
+        //autonomousCommand = (Command)autonomousMode.getSelected();
         if(autonomousCommand != null)
         	autonomousCommand.start();
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -95,6 +94,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+//        autonomousCommand.start();
         //new CalculateDistance(); //DOESNT WORK
         //new GearForAutoInMiddlePosition(); //DOESNT WORK
         //new MecanumDriveForAuto(); //DOESNTWORK
@@ -135,11 +135,9 @@ public class Robot extends IterativeRobot {
 		driveBase.log();
 		ropeClimber.log();
 		pneumatics.log();
-		
 	}
 	
 	private void choosingAutonomous(){
-		autonomousMode.addObject("Drive Straight", new MecanumDriveForAuto());
 		autonomousMode.addObject("Gear", new GearForAutoInMiddlePosition());
 		SmartDashboard.putData("Autonomous Selection", autonomousMode);
 	}

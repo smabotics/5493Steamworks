@@ -2,9 +2,12 @@ package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CloseGear extends Command {
+	
+	private boolean isFinished;
 
     public CloseGear() {
         requires(Robot.pneumatics);
@@ -16,16 +19,18 @@ public class CloseGear extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.pneumatics.close();
+    	Robot.pneumatics.close("CloseGearCommand");
+    	isFinished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	DriverStation.reportWarning("CloseGear End isFinished?" + isFinished(), true);
     	Robot.pneumatics.complete();
     }
 

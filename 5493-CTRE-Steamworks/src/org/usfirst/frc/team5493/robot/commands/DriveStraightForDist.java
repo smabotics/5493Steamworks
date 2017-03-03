@@ -4,15 +4,19 @@ import org.usfirst.frc.team5493.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveStraight extends Command {
+public class DriveStraightForDist extends Command {
 	
+	private double targetDist;
 	private double speed;
-	private double time;
+	private boolean goForward;
 
-    public DriveStraight(double s, double t) {
+    public DriveStraightForDist(double distance, boolean forward) {
         requires(Robot.driveBase);
-        speed = s;
-        time = t;
+        if(forward)
+        	targetDist = distance;
+        else
+        	targetDist = -distance;
+        goForward = forward;
     }
 
     // Called just before this Command runs the first time
@@ -21,19 +25,19 @@ public class DriveStraight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double currentTime = System.currentTimeMillis();
-    	while(currentTime < time)
-    		Robot.driveBase.drive(speed, speed, 0.0, 0.0);
+    	Robot.driveBase.drive(speed, speed, 0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        if(goForward)
+        	return (Robot.distance.calculateDistance() >= targetDist);
+        else
+        	return (Robot.distance.calculateDistance() <= targetDist);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveBase.stop();
     }
 
     // Called when another command which requires one or more of the same

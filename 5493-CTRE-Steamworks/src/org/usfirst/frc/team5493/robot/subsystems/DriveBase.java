@@ -28,13 +28,17 @@ public class DriveBase extends Subsystem {
 	public DriveBase() {
 		super();
 
-		leftFrontMotor = new CANTalon(RobotMap.leftFront);
+		/*leftFrontMotor = new CANTalon(RobotMap.leftFront);
 		leftBackMotor = new CANTalon(RobotMap.leftBack);
 		rightFrontMotor = new CANTalon(RobotMap.rightFront);
 		rightBackMotor = new CANTalon(RobotMap.rightBack);
 		rightFrontMotor.setInverted(true);
 		rightBackMotor.setInverted(true);
-		
+		*/
+		this.leftFrontMotor = RobotMap.SpeedController(RobotMap.leftFront, RobotMap.USE_PWM_TALON);
+		this.rightFrontMotor = RobotMap.SpeedController(4, 3);
+		this.leftBackMotor = RobotMap.SpeedController(3, 3);
+		this.rightBackMotor = RobotMap.SpeedController(5, 3);
 		
 
 		// leftBackMotor = (assigning a port on the joystick for controlling the

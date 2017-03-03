@@ -4,15 +4,15 @@ import org.usfirst.frc.team5493.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TurnLeft extends Command {
+public class TurnLeftForTime extends Command {
 	
 	private double speed;
 	private double time;
 
-    public TurnLeft() {
-    	speed = -0.2;
-    	time = 2;
-        requires(Robot.driveBase);
+    public TurnLeftForTime(double t) {
+    	requires(Robot.driveBase);
+    	speed = -0.5;
+    	time = t;
     }
 
     // Called just before this Command runs the first time
@@ -21,19 +21,22 @@ public class TurnLeft extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.driveBase.drive(speed, 0, 0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return(this.timeSinceInitialized() >= time);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveBase.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

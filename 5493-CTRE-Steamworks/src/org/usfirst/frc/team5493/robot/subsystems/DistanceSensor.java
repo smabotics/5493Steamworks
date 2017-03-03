@@ -10,14 +10,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DistanceSensor extends Subsystem{
 	
 	AnalogInput distanceSensor = new AnalogInput(RobotMap.distanceSensor);
-	double multiplier = 0.0023;
+	private double multiplier;
 	public double dist = distanceSensor.getValue() * multiplier;
 	
 	
 	public DistanceSensor(){
+		multiplier = 0.0023;
 	}
 
     public void initDefaultCommand(){
+    }
+    
+    public double calculateDistance(){
+    	return dist;
     }
     
     public void printDistance(){

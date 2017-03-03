@@ -20,17 +20,17 @@ public class Pneumatics extends Subsystem {
    
     }
     
-    public void release(){
+    public void release(String commandName){
     	if(!chambered){
-    		DriverStation.reportError("Releasing Gear", false);
+    		DriverStation.reportError("Releasing Gear: " + commandName, false);
     		solenoid.set(DoubleSolenoid.Value.kReverse);
     		chambered = true;
     	}
     }
     
-    public void close(){
+    public void close(String commandName){
     	if(chambered){
-    		DriverStation.reportError("Closing Gear", false);
+    		DriverStation.reportError("Closing Gear: " +commandName, false);
     		solenoid.set(DoubleSolenoid.Value.kForward);
     		chambered = false;
     	} else {
@@ -39,7 +39,7 @@ public class Pneumatics extends Subsystem {
     }
     
     public void complete(){
-    	DriverStation.reportError("Pneumatics complete", false);
+    	DriverStation.reportError("Pneumatics Complete", false);
     	solenoid.set(DoubleSolenoid.Value.kOff);
     }
     
