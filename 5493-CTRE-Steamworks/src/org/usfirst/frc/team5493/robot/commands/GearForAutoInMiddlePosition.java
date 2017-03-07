@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class GearForAutoInMiddlePosition extends CommandGroup {
 
     public GearForAutoInMiddlePosition() {
-    	double driveTime = 1.5;
-    	addSequential(new DriveStraightForTime(0.5, driveTime));
+    	double driveTime = 0.3;
+    	addSequential(new DriveStraightForTime(0.2, driveTime));
     	addSequential(new WaitCommand(driveTime + 1));
     	addSequential(new ReleaseGear());
     	addSequential(new WaitCommand(1));
-    	addSequential(new DriveStraightForTime(-0.8, 1));
+    	addSequential(new DriveStraightForTime(-0.4, 0.3));
     	addSequential(new WaitCommand(2.5));
     	addSequential(new CloseGear());
     	

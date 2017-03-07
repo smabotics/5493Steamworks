@@ -33,8 +33,8 @@ public class RobotMap {
     public int climbedRope = 0;
 	
     //BKE - Better names would allow you or anyone new to the code to know what the pneumatics1 and pneumatics2 do?
-	public static int pneumaticsPort1 = 7;//0; (changed for baby bot)
-	public static int pneumaticsPort2 = 4;//1; (changed for baby bot)
+	public static int pneumaticsPort1 = 0;
+	public static int pneumaticsPort2 = 1;
 	public static int compressorNum = 0;
 	
 	public static int distanceSensor = 3;

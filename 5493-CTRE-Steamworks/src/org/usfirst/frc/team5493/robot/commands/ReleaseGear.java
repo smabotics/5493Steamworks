@@ -30,7 +30,7 @@ public class ReleaseGear extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	DriverStation.reportWarning("End isFinished?" + isFinished(), true);
+    	DriverStation.reportWarning("End isFinished?" + isFinished(), false);
     	Robot.pneumatics.complete();
     }
 
