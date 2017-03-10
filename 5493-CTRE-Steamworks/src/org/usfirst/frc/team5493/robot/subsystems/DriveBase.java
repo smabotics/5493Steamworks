@@ -28,37 +28,16 @@ public class DriveBase extends Subsystem {
 	public DriveBase() {
 		super();
 
-		/*leftFrontMotor = new CANTalon(RobotMap.leftFront);
+		leftFrontMotor = new CANTalon(RobotMap.leftFront);
 		leftBackMotor = new CANTalon(RobotMap.leftBack);
 		rightFrontMotor = new CANTalon(RobotMap.rightFront);
 		rightBackMotor = new CANTalon(RobotMap.rightBack);
 		rightFrontMotor.setInverted(true);
 		rightBackMotor.setInverted(true);
-		*/
-		this.leftFrontMotor = RobotMap.SpeedController(RobotMap.leftFront, RobotMap.USE_PWM_TALON);
-		this.rightFrontMotor = RobotMap.SpeedController(4, 3);
-		this.leftBackMotor = RobotMap.SpeedController(3, 3);
-		this.rightBackMotor = RobotMap.SpeedController(5, 3);
-		
 
-		// leftBackMotor = (assigning a port on the joystick for controlling the
-		// left back motor)
-		// BKE - These motors are being passed by wrong order... front left,
-		// rear left, front right, rear right.
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
-
-//		robotDrive.setInvertedMotor(MotorType.kFrontLeft, true); // invert the
-//		// left side
-//		// motors
-//		robotDrive.setInvertedMotor(MotorType.kRearLeft, true); // you may need
-//		// to change or
-//		// remove this
-//		// to match your
-//		// robot
 		drive.setExpiration(0.1);
-
-		LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable) leftFrontMotor);
-
+		//LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable) leftFrontMotor);
 	}
 
 	public void initDefaultCommand() {

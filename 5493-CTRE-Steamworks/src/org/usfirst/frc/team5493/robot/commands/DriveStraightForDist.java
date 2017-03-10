@@ -30,10 +30,11 @@ public class DriveStraightForDist extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(goForward)
-        	return (Robot.distance.calculateDistance() >= targetDist);
-        else
-        	return (Robot.distance.calculateDistance() <= targetDist);
+        //if(goForward)
+        	//return (Robot.distance.calculateDistance() >= targetDist);
+        //else
+        	//return (Robot.distance.calculateDistance() <= targetDist);
+    	return false;
     }
 
     // Called once after isFinished returns true

@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team5493.robot.commands.DriveStraightForDist;
+import org.usfirst.frc.team5493.robot.commands.DriveStraightForTime;
 import org.usfirst.frc.team5493.robot.commands.GearForAutoInMiddlePosition;
 import org.usfirst.frc.team5493.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
@@ -20,7 +22,7 @@ public class Robot extends IterativeRobot {
 	public static  DriveBase driveBase;
 	public static RopeClimber ropeClimber;
 	public static Pneumatics pneumatics;
-	public static DistanceSensor distance;
+//	public static DistanceSensor distance;
 	
 	public static OI oi;
 
@@ -35,10 +37,10 @@ public class Robot extends IterativeRobot {
     	ropeClimber = new RopeClimber();
     	pneumatics = new Pneumatics();
         driveBase = new DriveBase();
-        distance = new DistanceSensor();
+//        distance = new DistanceSensor();
         oi = new OI();
         
-        //CameraServer.getInstance().startAutomaticCapture();
+        CameraServer.getInstance().startAutomaticCapture();
         
         //SmartDashboard.putData("Drive Base", driveBase);
 		//SmartDashboard.putData("Rope Climber", ropeClimber);
@@ -69,7 +71,11 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-    	autonomousCommand = new GearForAutoInMiddlePosition();
+    	//PASSING THE BASELINE
+    	autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
+    	//SETTING GEAR IN THE MIDDLE POSITION
+    	//autonomousCommand = new GearForAutoInMiddlePosition();
+    	//autonomousCommand = new DriveStraightForDist(-0.25, true);
     	
         //autonomousCommand = (Command)autonomousMode.getSelected();
         if(autonomousCommand != null)

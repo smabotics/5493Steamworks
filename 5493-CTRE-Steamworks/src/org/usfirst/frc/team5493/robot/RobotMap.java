@@ -24,10 +24,10 @@ public class RobotMap {
 	
 	//Talon #'s from the web dashboard
 	//BKE -- Are these drive motors or ropeMotors - better comments and names help in a pinch.
-    public static int leftFront = 2;//5; (changed for baby bot)
-    public static int rightFront = 4;//3; (changed for baby bot)
-    public static int leftBack = 3;//1; (changed for baby bot)
-    public static int rightBack = 5;//8; (changed for baby bot)
+    public static int leftFront = 5;
+    public static int rightFront = 3;
+    public static int leftBack = 1;
+    public static int rightBack = 8;
     public static int ropeMotorLeft = 2;
     public static int ropeMotorRight = 9;
     public int climbedRope = 0;
