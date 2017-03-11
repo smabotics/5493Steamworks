@@ -5,18 +5,17 @@ import org.usfirst.frc.team5493.robot.RobotMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class RopeClimber extends Subsystem {
+public class RopeClimber2 extends Subsystem {
     
-    public SpeedController ropeMotorLeft;
-    public SpeedController ropeMotorRight;
+    public SpeedController ropeMotor;
     
-    public RopeClimber(){
+    public RopeClimber2(){
     	super();
-    	ropeMotorLeft = new CANTalon(RobotMap.ropeMotorLeft);
-    	ropeMotorRight = new CANTalon(RobotMap.ropeMotorRight);
-    	ropeMotorRight.setInverted(true);
+    	ropeMotor = new CANTalon(RobotMap.ropeMotorRight);
+    	//ropeMotor.setInverted(true);
     }
 
     public void initDefaultCommand() {

@@ -1,13 +1,17 @@
 package org.usfirst.frc.team5493.robot;
 
+//import org.usfirst.frc.team5493.robot.commands.Climb2;
 import org.usfirst.frc.team5493.robot.commands.ClimbRope;
 import org.usfirst.frc.team5493.robot.commands.ReleaseGear;
+//import org.usfirst.frc.team5493.robot.commands.Stall;
 import org.usfirst.frc.team5493.robot.commands.CloseGear;
 import org.usfirst.frc.team5493.robot.commands.UnClimb;
+//import org.usfirst.frc.team5493.robot.commands.UnClimb2;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -31,11 +35,15 @@ public class OI {
     public OI(){
     	JoystickButton climbRope = new JoystickButton(joy2, RobotMap.JOYBTN_Y);
     	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOYBTN_A);
+//    	JoystickButton stall = new JoystickButton(joy2, RobotMap.JOYBTN_RB);
     	JoystickButton releaseGear = new JoystickButton(joy2, RobotMap.JOYBTN_B);
     	JoystickButton closeGear = new JoystickButton(joy2, RobotMap.JOYBTN_X);
     	
+//    	climbRope2.whenPressed(new Climb2());
     	climbRope.whileHeld(new ClimbRope());
     	unClimb.whileHeld(new UnClimb());
+//    	unClimb.whenPressed(new UnClimb2());
+//    	stall.whenPressed(new Stall());
     	releaseGear.whenPressed(new ReleaseGear());
     	closeGear.whenPressed(new CloseGear());
        

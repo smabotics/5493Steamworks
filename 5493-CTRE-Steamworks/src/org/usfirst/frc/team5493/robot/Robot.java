@@ -13,6 +13,7 @@ import org.usfirst.frc.team5493.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team5493.robot.subsystems.RopeClimber;
+import org.usfirst.frc.team5493.robot.subsystems.RopeClimber2;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static RopeClimber ropeClimber;
 	public static Pneumatics pneumatics;
 //	public static DistanceSensor distance;
+//	public static RopeClimber2 climber2;
 	
 	public static OI oi;
 
@@ -37,7 +39,8 @@ public class Robot extends IterativeRobot {
     	ropeClimber = new RopeClimber();
     	pneumatics = new Pneumatics();
         driveBase = new DriveBase();
-//        distance = new DistanceSensor();
+//      distance = new DistanceSensor();
+//      climber2 = new RopeClimber2();
         oi = new OI();
         
         CameraServer.getInstance().startAutomaticCapture();
@@ -72,7 +75,8 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
     	//PASSING THE BASELINE
-    	autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
+    	//autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
+    	autonomousCommand = new DriveStraightForTime(-0.3, 7);
     	//SETTING GEAR IN THE MIDDLE POSITION
     	//autonomousCommand = new GearForAutoInMiddlePosition();
     	//autonomousCommand = new DriveStraightForDist(-0.25, true);
@@ -139,7 +143,7 @@ public class Robot extends IterativeRobot {
 	 */
 	private void log() {
 		driveBase.log();
-		ropeClimber.log();
+//		ropeClimber.log();
 		pneumatics.log();
 	}
 	

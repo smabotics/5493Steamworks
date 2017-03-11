@@ -1,13 +1,14 @@
+/*
 package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class UnClimb extends Command {
+public class Stall extends Command {
 
-    public UnClimb() {
-        requires(Robot.ropeClimber);
+    public Stall() {
+        requires(Robot.climber2);
     }
 
     // Called just before this Command runs the first time
@@ -16,8 +17,7 @@ public class UnClimb extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.ropeClimber.ropeMotorLeft.set(-0.5);
-    	Robot.ropeClimber.ropeMotorRight.set(-0.5);
+    	Robot.climber2.ropeMotor.set(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -27,13 +27,12 @@ public class UnClimb extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.ropeClimber.ropeMotorLeft.set(0.0);
-    	Robot.ropeClimber.ropeMotorRight.set(0.0);
+    	Robot.climber2.ropeMotor.set(0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
+*/
