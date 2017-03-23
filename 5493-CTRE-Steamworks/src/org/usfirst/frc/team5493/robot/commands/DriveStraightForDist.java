@@ -7,16 +7,18 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveStraightForDist extends Command {
 	
 	private double targetDist;
+	private double leftDist;
+	private double rightDist;
 	private double speed;
-	private boolean goForward;
+	private boolean leftForward;
+	private boolean rightForward;
 
     public DriveStraightForDist(double distance, boolean forward) {
         requires(Robot.driveBase);
-        if(forward)
-        	targetDist = distance;
-        else
-        	targetDist = -distance;
-        goForward = forward;
+        if(leftDist < targetDist)
+        	leftForward = true;
+        if(rightDist < targetDist)
+        	rightForward = true;
     }
 
     // Called just before this Command runs the first time
@@ -25,7 +27,15 @@ public class DriveStraightForDist extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveBase.drive(speed, speed, 0, 0);
+    	if(leftForward && rightForward){
+    		Robot.driveBase.drive(speed, speed, 0, 0);
+    	} else if(leftForward){
+    		Robot.driveBase.drive(speed, speed, speed * 0.25, 0);
+    	} else if(rightForward){
+    		Robot.driveBase.drive(speed, speed, speed * -0.25, 0);
+    	} else{
+    		Robot.driveBase.drive(0, 0, 0, 0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

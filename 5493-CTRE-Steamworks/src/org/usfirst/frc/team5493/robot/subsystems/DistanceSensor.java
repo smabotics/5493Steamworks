@@ -4,31 +4,35 @@ import org.usfirst.frc.team5493.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DistanceSensor extends Subsystem{
 	
-	AnalogInput distanceSensor = new AnalogInput(RobotMap.distanceSensor);
-	private double multiplier;
-	public double dist = distanceSensor.getValue() * multiplier;
-	
-	
+	Ultrasonic distanceLeft = new Ultrasonic(RobotMap.leftDistanceOutput, RobotMap.leftDistanceInput);
+	Ultrasonic distanceRight = new Ultrasonic(RobotMap.rightDistanceOutput, RobotMap.rightDistanceInput);
+	double leftDistance;
+	double rightDistance;
+
 	public DistanceSensor(){
-		multiplier = 0.0023;
+		leftDistance = distanceLeft.getRangeInches();
+		rightDistance = distanceRight.getRangeInches();
 	}
 
     public void initDefaultCommand(){
     }
     
-    public double calculateDistance(){
-    	return dist;
+    public double calculateDistanceLeft(){
+    	return leftDistance;
+    }
+    
+    public double calculateDistanceRight(){
+    	return rightDistance;
     }
     
     public void printDistance(){
-    	DriverStation.reportError("Distance is: " + dist + " meters", false);
-    	//SmartDashboard.putData("Distance: " + dist, false);
-		//System.out.printf("%.2f", dist);
+    	DriverStation.reportError("DIST LEFT: " + calculateDistanceLeft() + " DIST RIGHT: " + calculateDistanceRight(), false);
     }
 }
 

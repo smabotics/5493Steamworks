@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5493.robot;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -12,6 +13,7 @@ import org.usfirst.frc.team5493.robot.commands.GearForAutoInMiddlePosition;
 import org.usfirst.frc.team5493.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team5493.robot.subsystems.RopeCatcher;
 import org.usfirst.frc.team5493.robot.subsystems.RopeClimber;
 import org.usfirst.frc.team5493.robot.subsystems.RopeClimber2;
 
@@ -23,10 +25,15 @@ public class Robot extends IterativeRobot {
 	public static  DriveBase driveBase;
 	public static RopeClimber ropeClimber;
 	public static Pneumatics pneumatics;
-//	public static DistanceSensor distance;
+	public static RopeCatcher ropeCatcher;
+	public static DistanceSensor distance;
 //	public static RopeClimber2 climber2;
 	
 	public static OI oi;
+	
+	AnalogGyro gyro;
+	final int gyroChannel = 0;
+	final double voltsPerDegreePerSecond = .0128;
 
     Command autonomousCommand;
     SendableChooser autonomousMode = new SendableChooser();
@@ -37,17 +44,16 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	ropeClimber = new RopeClimber();
+    	ropeCatcher = new RopeCatcher();
     	pneumatics = new Pneumatics();
         driveBase = new DriveBase();
-//      distance = new DistanceSensor();
+        distance = new DistanceSensor();
 //      climber2 = new RopeClimber2();
         oi = new OI();
         
         CameraServer.getInstance().startAutomaticCapture();
+        gyro = new AnalogGyro(gyroChannel);
         
-        //SmartDashboard.putData("Drive Base", driveBase);
-		//SmartDashboard.putData("Rope Climber", ropeClimber);
-		//SmartDashboard.putData("Pneumatics System", pneumatics);
     }
 	
 	/**
@@ -74,9 +80,10 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-    	//PASSING THE BASELINE
-    	//autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
-    	autonomousCommand = new DriveStraightForTime(-0.3, 7);
+    	//MIDDLE POSITION TO GEAR PEG
+    	autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
+    	//SIDE POSITION PASSING BASELINE
+    	//autonomousCommand = new DriveStraightForTime(-0.3, 6);
     	//SETTING GEAR IN THE MIDDLE POSITION
     	//autonomousCommand = new GearForAutoInMiddlePosition();
     	//autonomousCommand = new DriveStraightForDist(-0.25, true);

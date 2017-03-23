@@ -1,17 +1,21 @@
 package org.usfirst.frc.team5493.robot;
 
+import org.usfirst.frc.team5493.robot.commands.CaptureRope;
 //import org.usfirst.frc.team5493.robot.commands.Climb2;
 import org.usfirst.frc.team5493.robot.commands.ClimbRope;
 import org.usfirst.frc.team5493.robot.commands.ReleaseGear;
+import org.usfirst.frc.team5493.robot.commands.SensitizeStickCommand;
+import org.usfirst.frc.team5493.robot.commands.UnCaptureRope;
 //import org.usfirst.frc.team5493.robot.commands.Stall;
 import org.usfirst.frc.team5493.robot.commands.CloseGear;
+import org.usfirst.frc.team5493.robot.commands.DeSensitizeStickCommand;
+import org.usfirst.frc.team5493.robot.commands.PrintDistance;
 import org.usfirst.frc.team5493.robot.commands.UnClimb;
 //import org.usfirst.frc.team5493.robot.commands.UnClimb2;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -33,31 +37,33 @@ public class OI {
     }
     
     public OI(){
-    	JoystickButton climbRope = new JoystickButton(joy2, RobotMap.JOYBTN_Y);
-    	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOYBTN_A);
-//    	JoystickButton stall = new JoystickButton(joy2, RobotMap.JOYBTN_RB);
-    	JoystickButton releaseGear = new JoystickButton(joy2, RobotMap.JOYBTN_B);
-    	JoystickButton closeGear = new JoystickButton(joy2, RobotMap.JOYBTN_X);
     	
-//    	climbRope2.whenPressed(new Climb2());
+    	JoystickButton climbRope = new JoystickButton(joy2, RobotMap.JOY2BTN_Y);
+    	JoystickButton climbRope2 = new JoystickButton(joy2, RobotMap.JOYBTN_LEFT_AXIS_CLICK);
+    	JoystickButton unClimb = new JoystickButton(joy2, RobotMap.JOY2BTN_A);
+    	JoystickButton captureRope = new JoystickButton(joy2, RobotMap.JOY2BTN_B);
+    	JoystickButton captureRopeDriver = new JoystickButton(driveJoystick, RobotMap.JOY_DRIVEBTN_B);
+    	JoystickButton unCaptureRope = new JoystickButton(joy2, RobotMap.JOY2BTN_X);
+    	JoystickButton releaseGear = new JoystickButton(joy2, RobotMap.JOYBTN_RB);
+    	JoystickButton closeGear = new JoystickButton(joy2, RobotMap.JOYBTN_LB);
+    	JoystickButton startSensitive = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LOGICAL_START);
+    	JoystickButton endSensitive = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LOGICAL_BACK);
+    	
+    	JoystickButton printDist = new JoystickButton(driveJoystick, RobotMap.JOY_DRIVEBTN_A);
+    	
+    	
     	climbRope.whileHeld(new ClimbRope());
     	unClimb.whileHeld(new UnClimb());
-//    	unClimb.whenPressed(new UnClimb2());
-//    	stall.whenPressed(new Stall());
+    	captureRope.whenPressed(new CaptureRope());
+    	captureRopeDriver.whenPressed(new CaptureRope());
+    	unCaptureRope.whenPressed(new UnCaptureRope());
     	releaseGear.whenPressed(new ReleaseGear());
     	closeGear.whenPressed(new CloseGear());
        
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
+    	printDist.whenPressed(new PrintDistance());
+    	
+    	startSensitive.whenPressed(new SensitizeStickCommand());
+    	endSensitive.whenPressed(new DeSensitizeStickCommand());
     	
     }
     

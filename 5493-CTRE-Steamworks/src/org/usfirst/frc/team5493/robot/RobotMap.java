@@ -13,31 +13,44 @@ public class RobotMap {
 	public final static int DRIVE_JOYSTICK_PORT = 0;
 	public final static int JOYSTICK2_PORT = 1;
 
-	public final static int JOYBTN_A = 1;
-	public final static int JOYBTN_B = 2;
-	public final static int JOYBTN_X = 3;
-	public final static int JOYBTN_Y = 4;
+	public final static int JOY2BTN_A = 1;
+	public final static int JOY2BTN_B = 2;
+	public final static int JOY2BTN_X = 3;
+	public final static int JOY2BTN_Y = 4;
 	public final static int JOYBTN_LB = 5;
 	public final static int JOYBTN_RB = 6;
 	public final static int JOYAXS_LEFT_Y = 1;
 	public final static int JOYAXS_RIGHT_Y = 5;
+	public final static int JOYBTN_LEFT_AXIS_CLICK = 9;
+	public final static int JOY_DRIVEBTN_A = 2;
+	public final static int JOY_DRIVEBTN_B = 3;
+	public final static int JOY_DRIVEBTN_X = 1;
+	public final static int JOY_DRIVEBTN_Y = 4;
+	
+	public final static int JOYBTN_LOGICAL_BACK = 9;
+	public final static int JOYBTN_LOGICAL_START = 10;
 	
 	//Talon #'s from the web dashboard
-	//BKE -- Are these drive motors or ropeMotors - better comments and names help in a pinch.
     public static int leftFront = 5;
     public static int rightFront = 3;
     public static int leftBack = 1;
     public static int rightBack = 8;
     public static int ropeMotorLeft = 2;
     public static int ropeMotorRight = 9;
+    public final static int servo1 = 1;
+    public final static int servo2 = 0;
     public int climbedRope = 0;
 	
-    //BKE - Better names would allow you or anyone new to the code to know what the pneumatics1 and pneumatics2 do?
 	public static int pneumaticsPort1 = 0;
 	public static int pneumaticsPort2 = 1;
 	public static int compressorNum = 0;
 	
 	public static int distanceSensor = 3;
+	
+	public static int leftDistanceOutput = 0;
+	public static int leftDistanceInput = 1;
+	public static int rightDistanceOutput = 2;
+	public static int rightDistanceInput = 3;
 	
 	public static final int USE_CAN_TALON = 1;
 	public static final int USE_PWM_TALON = 2;
