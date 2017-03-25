@@ -16,7 +16,7 @@ public class RopeClimber extends Subsystem {
     	super();
     	ropeMotorLeft = new CANTalon(RobotMap.ropeMotorLeft);
     	ropeMotorRight = new CANTalon(RobotMap.ropeMotorRight);
-    	ropeMotorRight.setInverted(true);
+    	ropeMotorLeft.setInverted(true);
     }
 
     public void initDefaultCommand() {

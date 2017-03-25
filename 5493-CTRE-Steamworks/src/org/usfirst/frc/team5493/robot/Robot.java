@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightForDist;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightForTime;
 import org.usfirst.frc.team5493.robot.commands.GearForAutoInMiddlePosition;
+import org.usfirst.frc.team5493.robot.commands.SensitizeStickCommand;
 import org.usfirst.frc.team5493.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Pneumatics;
@@ -31,9 +32,10 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	
-	AnalogGyro gyro;
+	public static AnalogGyro gyro;
 	final int gyroChannel = 0;
-	final double voltsPerDegreePerSecond = .0128;
+	public final static double voltsPerDegreePerSecond = .0128;
+	
 
     Command autonomousCommand;
     SendableChooser autonomousMode = new SendableChooser();
@@ -53,6 +55,8 @@ public class Robot extends IterativeRobot {
         
         CameraServer.getInstance().startAutomaticCapture();
         gyro = new AnalogGyro(gyroChannel);
+        gyro.reset();
+        Robot.driveBase.toggleSensitivity(true);
         
     }
 	
@@ -81,9 +85,9 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
     	//MIDDLE POSITION TO GEAR PEG
-    	autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
+    	//autonomousCommand = new DriveStraightForTime(-0.25, 3.4);
     	//SIDE POSITION PASSING BASELINE
-    	//autonomousCommand = new DriveStraightForTime(-0.3, 6);
+    	autonomousCommand = new DriveStraightForTime(-0.3, 6);
     	//SETTING GEAR IN THE MIDDLE POSITION
     	//autonomousCommand = new GearForAutoInMiddlePosition();
     	//autonomousCommand = new DriveStraightForDist(-0.25, true);
@@ -111,6 +115,10 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        if (autonomousCommand != null && autonomousCommand.isRunning() == true){
+        	((DriveStraightForTime)autonomousCommand).setAngle(gyro.getAngle());
+        }
+    	
 //        autonomousCommand.start();
         //new CalculateDistance(); //DOESNT WORK
         //new GearForAutoInMiddlePosition(); //DOESNT WORK
